@@ -31,6 +31,7 @@ public class Jugador : MonoBehaviour
     {
         if (collision.transform.CompareTag("Collectible"))
         {
+            Destroy(collision.gameObject);
 
         }
     }
