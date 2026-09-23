@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Jugador : MonoBehaviour
 {
-    public Rigidbody rigidbody;
+    private MeshRenderer rendererRenderer;
 
 
     void Start()
     {
-        rigidbody.useGravity = false;
 
-        Debug.Log("Hola Mundo");
+        rendererRenderer = GetComponent<MeshRenderer>();
 
+        rendererRenderer.enabled = false;
 
     }
 }
