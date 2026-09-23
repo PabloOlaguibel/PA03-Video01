@@ -25,5 +25,15 @@ public class Jugador : MonoBehaviour
         rb.linearVelocity = movement;
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+
+    {
+        if (collision.transform.CompareTag("Collectible"))
+        {
+
+        }
+    }
+
 }
 
