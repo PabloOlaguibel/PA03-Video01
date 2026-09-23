@@ -282,8 +282,8 @@ GameObject:
   - component: {fileID: 818308201}
   - component: {fileID: 818308200}
   m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
+  m_Name: Collectible
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
