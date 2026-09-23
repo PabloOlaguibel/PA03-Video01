@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class Jugador : MonoBehaviour
 {
-    private MeshRenderer rendererRenderer;
+    public float speed = 5f;
 
+    private Rigidbody rb;
 
-    void Start()
+    private void Awake()
     {
 
-        rendererRenderer = GetComponent<MeshRenderer>();
+        rb = GetComponent<Rigidbody>();
 
-        rendererRenderer.enabled = false;
+    }
+
+    private void Update()
+    {
+
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal*speed, rb.linearVelocity.y, moveVertical*speed);
+
+        rb.linearVelocity = movement;
 
     }
 }
