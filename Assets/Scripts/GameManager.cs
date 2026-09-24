@@ -13,11 +13,17 @@ public class GameManager : MonoBehaviour
 {
     totalCollectiblesNumber = transform.childCount;
 
-    Debug.Log("Texto superior: " + collectiblesNumbersText);
-    Debug.Log("Texto inferior: " + totalCollectiblesNumbersText);
 
     collectiblesNumbersText.text = "0";
     totalCollectiblesNumbersText.text = totalCollectiblesNumber.ToString();
+}
+
+void Update()
+{
+    if (transform.childCount <= 0)
+    {
+        Debug.Log("Win");
+    }
 }
 
     public void AddCollectible()
