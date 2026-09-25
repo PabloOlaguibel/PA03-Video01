@@ -6,10 +6,14 @@ public class Jugador : MonoBehaviour
 
     private Rigidbody rb;
 
+    private CamaraPrimeraPersona camaraPrimeraPersona;
+
     private void Awake()
     {
 
         rb = GetComponent<Rigidbody>();
+
+        camaraPrimeraPersona = GetComponent<CamaraPrimeraPersona>();
 
     }
 
@@ -20,11 +24,15 @@ public class Jugador : MonoBehaviour
 
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal*speed, rb.linearVelocity.y, moveVertical*speed);
+        float yaw = camaraPrimeraPersona != null ? camaraPrimeraPersona.Yaw : 0f;
+
+        Vector3 direccion = Quaternion.Euler(0f, yaw, 0f) * new Vector3(moveHorizontal, 0f, moveVertical);
+
+        Vector3 movement = new Vector3(direccion.x*speed, rb.linearVelocity.y, direccion.z*speed);
 
         rb.linearVelocity = movement;
 
-    }
+    } 
 
     private void OnCollisionEnter(Collision collision)
 

@@ -18,7 +18,7 @@ public class Enemigo : MonoBehaviour
             playerTransform = jugador.transform;
         }
     }
-
+ 
     private void Update()
     {
         if (playerTransform != null)
