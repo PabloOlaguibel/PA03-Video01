@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioSource audioSource;
     public TMP_Text collectiblesNumbersText;
     public TMP_Text totalCollectiblesNumbersText;
 
@@ -32,6 +33,11 @@ public class GameManager : MonoBehaviour
 
     public void AddCollectible()
     {
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+
         collectiblesNumber++;
 
         collectiblesNumbersText.text = collectiblesNumber.ToString();
