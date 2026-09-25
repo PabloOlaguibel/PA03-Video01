@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,28 +10,30 @@ public class GameManager : MonoBehaviour
     private int collectiblesNumber = 0;
     private int totalCollectiblesNumber;
 
-  private void Start()
-{
-    totalCollectiblesNumber = transform.childCount;
-
-
-    collectiblesNumbersText.text = "0";
-    totalCollectiblesNumbersText.text = totalCollectiblesNumber.ToString();
-}
-
-void Update()
-{
-    if (transform.childCount <= 0)
+    private void Start()
     {
-        Debug.Log("Win");
+        totalCollectiblesNumber = transform.childCount;
+
+        collectiblesNumbersText.text = "0";
+        totalCollectiblesNumbersText.text = totalCollectiblesNumber.ToString();
     }
-}
+
+    private void Update()
+    {
+        if (transform.childCount <= 0)
+        {
+            Debug.Log("Win");
+
+            SceneManager.LoadScene(
+                SceneManager.GetActiveScene().buildIndex + 1
+            );
+        }
+    }
 
     public void AddCollectible()
     {
         collectiblesNumber++;
 
-        if (collectiblesNumbersText != null)
-            collectiblesNumbersText.text = collectiblesNumber.ToString();
+        collectiblesNumbersText.text = collectiblesNumber.ToString();
     }
 }
