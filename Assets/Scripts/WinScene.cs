@@ -14,4 +14,4 @@ public class WinScene : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-}
+} 

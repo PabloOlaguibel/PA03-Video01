@@ -10,4 +10,4 @@ public class Killzone : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-}
+} 

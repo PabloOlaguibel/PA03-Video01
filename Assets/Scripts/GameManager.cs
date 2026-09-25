@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     private int collectiblesNumber = 0;
     private int totalCollectiblesNumber;
-
+ 
     private void Start()
     {
         totalCollectiblesNumber = transform.childCount;
