@@ -5,20 +5,35 @@ public class EnergyCore : MonoBehaviour
     public float rotationSpeed = 100f;
     public float floatingHeight = 0.25f;
     public float floatingSpeed = 2f;
+
     Vector3 startPosition;
 
-    void Start() { startPosition = transform.position; }
-    void Update()
+    void Start()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime, Space.World);
-        transform.position = startPosition + Vector3.up * (Mathf.Sin(Time.time * floatingSpeed) * floatingHeight);
+        startPosition = transform.position;
     }
 
-    void OnTriggerEnter(Collider other)
+    void Update()
     {
-        if (!other.CompareTag("Player")) return;
-        StageController controller = FindFirstObjectByType<StageController>();
-        if (controller != null) controller.RegisterEnergyCore();
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+
+        transform.position =
+            startPosition +
+            Vector3.up * Mathf.Sin(Time.time * floatingSpeed) * floatingHeight;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        GameManager gm = FindFirstObjectByType<GameManager>();
+
+        if (gm != null)
+        {
+            gm.AddCollectible();
+        }
+
         Destroy(gameObject);
     }
 }

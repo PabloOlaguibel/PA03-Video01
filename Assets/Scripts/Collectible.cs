@@ -1,20 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
-
 {
-        private void OnCollisionEnter(Collision collision)
-
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             FindAnyObjectByType<GameManager>().AddCollectible();
-
             Destroy(gameObject);
-
         }
     }
-
 }
